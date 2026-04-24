@@ -1,0 +1,96 @@
+good ab muje idex file bna do es trha ki 1 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logic Escape - Outsmart the Monster</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: #fff;
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+h1 { font-size: 42px; }
+h2 { color: #ffcc00; margin-top: 30px; }
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+ul { padding-left: 20px; }
+.btn {
+    background: #ffcc00;
+    color: #000;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+}
+.footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div class="hero">
+    <h1>🚀 Logic Escape</h1>
+    <p><strong>Outsmart the Monster</strong></p>
+</div>
+<div class="container">
+<div class="card">
+<p>
+Welcome to <strong>Logic Escape</strong>, a fast-paced puzzle strategy game where your brain is your only weapon.
+In a world filled with danger and lava, you must escape while a smart AI monster chases you.
+</p>
+</div>
+<h2>🧠 Think Before You Move</h2>
+<div class="card">
+<p>Every move matters. One wrong step and you're trapped.</p>
+</div>
+<h2>🔥 Gameplay</h2>
+<div class="card">
+<ul>
+<li>Turn-based movement</li>
+<li>Smart AI monster</li>
+<li>Increasing difficulty</li>
+<li>Quick & addictive</li>
+</ul>
+</div>
+<h2>🎯 Goal</h2>
+<div class="card">
+<p>Reach the house safely without getting caught.</p>
+</div>
+<h2>🎮 Why Play?</h2>
+<div class="card">
+<ul>
+<li>Easy to learn</li>
+<li>Hard to master</li>
+<li>Brain training gameplay</li>
+</ul>
+</div>
+<div class="footer">
+<p>© 2026 Logic Escape</p>
+<p><a href="privacy.html">Privacy Policy</a></p>
+ <p><a href="Marketing.html"> Marketing </a></p>
+</div>
+</div>
+</body>
+</html>
