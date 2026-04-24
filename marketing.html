@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing - Survival Strike War Zone</title>
+<meta name="description" content="Survival Strike War Zone — Fight waves, hunt zombies, and conquer three epic game modes. Download now on iOS.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap');
+
+  :root {
+    --accent: #e8a020;
+    --dark: #0d0d0f;
+    --dark3: #1c1d24;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8e6e0;
+    --muted: #7a7870;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(232,160,32,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(232,160,32,0.3);
+    padding: 5px 16px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 24px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(44px, 9vw, 82px);
+    font-weight: 800;
+    line-height: 0.92;
+    text-transform: uppercase;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+
+  .hero h1 span { display: block; color: var(--accent); }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-top: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+
+  .hero-desc {
+    max-width: 540px;
+    margin: 20px auto 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--muted);
+    animation: fadeUp 0.5s 0.25s ease both;
+  }
+
+  .hero-cta {
+    margin-top: 36px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn:hover { background: #f0b030; transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid rgba(232,160,32,0.35);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { background: rgba(232,160,32,0.08); color: #f0b030; }
+
+  /* ─── SECTION ─── */
+  section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 500px;
+    margin-bottom: 30px;
+  }
+
+  /* ─── SELL POINTS ─── */
+  .sell-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .sell-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px 22px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sell-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .sell-card:hover { border-color: rgba(232,160,32,0.25); transform: translateY(-3px); }
+  .sell-card:hover::before { transform: scaleX(1); }
+
+  .sell-icon { font-size: 26px; display: block; margin-bottom: 12px; }
+
+  .sell-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 7px;
+  }
+
+  .sell-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  /* ─── STATS ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 0;
+  }
+
+  .stat-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 18px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ─── AUDIENCE ─── */
+  .audience-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+  }
+
+  .audience-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .audience-item:nth-child(odd) { padding-right: 24px; }
+  .audience-item:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--border); }
+
+  .aud-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .aud-text { font-size: 14px; color: var(--text); line-height: 1.5; }
+
+  /* ─── TAGLINE BLOCK ─── */
+  .tagline-block {
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    background: rgba(232,160,32,0.04);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .tagline-block p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .tagline-block span { font-size: 13px; color: var(--muted); font-family: 'Barlow', sans-serif; font-weight: 300; text-transform: none; letter-spacing: 0; }
+
+  /* ─── DOWNLOAD CTA ─── */
+  .cta-block {
+    text-align: center;
+    padding: 60px 0 0;
+  }
+
+  .cta-block h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .cta-block p { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.7; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    margin-top: 50px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  .footer-copy { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+
+  .footer-links { display: flex; gap: 20px; justify-content: center; }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: #fff; }
+
+  /* ─── ANIMATION ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 520px) {
+    .audience-list { grid-template-columns: 1fr; }
+    .audience-item:nth-child(even) { padding-left: 0; border-left: none; }
+    .audience-item:nth-child(odd) { padding-right: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-tag">Now Available on iOS</span>
+  <h1>Survival Strike<span>War Zone</span></h1>
+  <p class="hero-sub">Fight &nbsp;·&nbsp; Survive &nbsp;·&nbsp; Conquer</p>
+  <p class="hero-desc">Three game modes. Endless waves. A zombie-infested open world. AI companions by your side. One mobile shooter that delivers non-stop action from the very first launch.</p>
+  <div class="hero-cta">
+    <a href="#" class="btn">Download on App Store</a>
+    <a href="index.html" class="btn-ghost">← Back to Home</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- WHY THIS GAME -->
+  <section>
+    <p class="section-label">Why Play</p>
+    <h2 class="section-title">Built for Every Kind of Fighter</h2>
+    <p class="section-desc">Whether you have five minutes or five hours — Survival Strike War Zone has a mode for you. Fast sessions, deep progression, or an open-world hunt.</p>
+    <div class="sell-grid">
+      <div class="sell-card">
+        <span class="sell-icon">⚔️</span>
+        <p class="sell-title">Non-Stop Action</p>
+        <p class="sell-desc">Enemy waves that never stop spawning keep the pressure constant. No downtime. No waiting. Just pure combat from start to finish.</p>
+      </div>
+      <div class="sell-card">
+        <span class="sell-icon">🤝</span>
+        <p class="sell-title">Squad Gameplay</p>
+        <p class="sell-desc">Fight alongside AI companions in Survival and Story modes. Upgrade them with coins and build a squad that dominates the battlefield.</p>
+      </div>
+      <div class="sell-card">
+        <span class="sell-icon">🧟</span>
+        <p class="sell-title">Zombie Hunt Zone</p>
+        <p class="sell-desc">An expansive open hill map where zombies spawn at multiple locations. Explore, track, and eliminate every last one before they find you first.</p>
+      </div>
+      <div class="sell-card">
+        <span class="sell-icon">📖</span>
+        <p class="sell-title">Full Story Campaign</p>
+        <p class="sell-desc">A structured level-by-level story mode with progressive difficulty. Each mission tells a story, each level raises the stakes.</p>
+      </div>
+      <div class="sell-card">
+        <span class="sell-icon">🪙</span>
+        <p class="sell-title">Earn & Upgrade</p>
+        <p class="sell-desc">Every kill earns coins. Spend them in the shop on powerful weapons or invest in companion upgrades to strengthen your entire squad.</p>
+      </div>
+      <div class="sell-card">
+        <span class="sell-icon">🎯</span>
+        <p class="sell-title">Easy to Start</p>
+        <p class="sell-desc">A built-in Training Mode walks first-time players through all controls and mechanics before the real fight begins. Jump in with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <section>
+    <p class="section-label">At a Glance</p>
+    <h2 class="section-title">Everything in One Game</h2>
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Game Modes</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Training Mode</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">Enemy Waves</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">+</span>
+        <span class="stat-label">Upgradeable Companions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section>
+    <p class="section-label">Who Is This For</p>
+    <h2 class="section-title">Made for Players Like You</h2>
+    <p class="section-desc">Survival Strike War Zone is designed for a wide audience of mobile gamers who want more than just a casual tap-fest.</p>
+    <div class="audience-list">
+      <div class="audience-item"><div class="aud-dot"></div><span class="aud-text">Fans of mobile FPS and action shooters</span></div>
+      <div class="audience-item"><div class="aud-dot"></div><span class="aud-text">Players who love zombie survival games</span></div>
+      <div class="audience-item"><div class="aud-dot"></div><span class="aud-text">Gamers who enjoy squad-based combat</span></div>
+      <div class="audience-item"><div class="aud-dot"></div><span class="aud-text">Story mode and campaign enthusiasts</span></div>
+      <div class="audience-item"><div class="aud-dot"></div><span class="aud-text">Anyone who enjoys earning and upgrading gear</span></div>
+      <div class="audience-item"><div class="aud-dot"></div><span class="aud-text">Casual players wanting quick combat sessions</span></div>
+    </div>
+  </section>
+
+  <!-- TAGLINES -->
+  <section>
+    <p class="section-label">Campaign Taglines</p>
+    <h2 class="section-title">Ready-to-Use Ad Copy</h2>
+    <p class="section-desc">Short, punchy taglines for social media ads, banners, and promotional posts.</p>
+
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div class="tagline-block"><p>Your squad. Your guns. Your survival.</p><span>Best for social media ads — short and punchy.</span></div>
+      <div class="tagline-block"><p>Three modes. One war zone. Zero mercy.</p><span>Ideal for banner ads highlighting mode variety.</span></div>
+      <div class="tagline-block"><p>Kill. Earn. Upgrade. Repeat.</p><span>Highlights the coin economy loop — strong for retention ads.</span></div>
+      <div class="tagline-block"><p>The zombies don't stop. Neither should you.</p><span>Great for Zombie Mode focused promotions.</span></div>
+      <div class="tagline-block"><p>Train once. Fight forever.</p><span>Highlights Training Mode — good for new user acquisition.</span></div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD CTA -->
+  <div class="cta-block">
+    <h2>Download Now</h2>
+    <p>Survival Strike War Zone is available on the App Store. Join the fight today — your companions are waiting, and the war zone never sleeps.</p>
+    <a href="#" class="btn">Download on App Store</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-title">Survival Strike War Zone</p>
+    <p class="footer-copy">© 2026 Survival Strike War Zone. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
